@@ -4,10 +4,17 @@
     android:layout_height="match_parent"
     tools:context=".Activity.SatelliteFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="卫星" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+         />
 
 </FrameLayout>

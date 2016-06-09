@@ -44,20 +44,19 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         initView();
 
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager())
         {
-
             @Override
             public int getCount()
             {
@@ -73,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         };
 
         mViewPager.setAdapter(mAdapter);
-
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             private int currentIndex;
@@ -83,23 +81,22 @@ public class MainActivity extends AppCompatActivity {
                 resetTabBtn();
                 switch (position) {
                     case 0:
-                        ((ImageButton) mTabBtnSatellite.findViewById(R.id.btn_satellite))
+                        ((ImageButton) mTabBtnSatellite.findViewById(R.id.btn_tab_bottom_satellite))
                                 .setImageResource(R.drawable.btn_satellite_on);
                         break;
                     case 1:
-                        ((ImageButton) mTabBtnMap.findViewById(R.id.btn_map))
+                        ((ImageButton) mTabBtnMap.findViewById(R.id.btn_tab_bottom_map))
                                 .setImageResource(R.drawable.btn_map_on);
                         break;
                     case 2:
-                        ((ImageButton) mTabBtnCommunication.findViewById(R.id.btn_communication))
+                        ((ImageButton) mTabBtnCommunication.findViewById(R.id.btn_tab_bottom_communication))
                                 .setImageResource(R.drawable.btn_communication_on);
                         break;
                     case 3:
-                        ((ImageButton) mTabBtnCantacts.findViewById(R.id.btn_cantacts))
+                        ((ImageButton) mTabBtnCantacts.findViewById(R.id.btn_tab_bottom_cantacts))
                                 .setImageResource(R.drawable.btn_cantacts_on);
                         break;
                 }
-
                 currentIndex = position;
             }
 
@@ -113,16 +110,44 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //添加按钮选择功能
+        mTabBtnSatellite.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mViewPager.setCurrentItem(0,true);
+            }
+        });
+
+        mTabBtnMap.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mViewPager.setCurrentItem(1,true);
+            }
+        });
+
+        mTabBtnCommunication.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mViewPager.setCurrentItem(2,true);
+            }
+        });
+
+        mTabBtnCantacts.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mViewPager.setCurrentItem(3,true);
+            }
+        });
     }
     protected void resetTabBtn()
     {
-        ((ImageButton) mTabBtnSatellite.findViewById(R.id.btn_satellite))
+        ((ImageButton) mTabBtnSatellite.findViewById(R.id.btn_tab_bottom_satellite))
                 .setImageResource(R.drawable.btn_satellite_off);
-        ((ImageButton) mTabBtnMap.findViewById(R.id.btn_map))
+        ((ImageButton) mTabBtnMap.findViewById(R.id.btn_tab_bottom_map))
                 .setImageResource(R.drawable.btn_map_off);
-        ((ImageButton) mTabBtnCommunication.findViewById(R.id.btn_communication))
+        ((ImageButton) mTabBtnCommunication.findViewById(R.id.btn_tab_bottom_communication))
                 .setImageResource(R.drawable.btn_communication_off);
-        ((ImageButton) mTabBtnCantacts.findViewById(R.id.btn_cantacts))
+        ((ImageButton) mTabBtnCantacts.findViewById(R.id.btn_tab_bottom_cantacts))
                 .setImageResource(R.drawable.btn_cantacts_off);
     }
 
@@ -130,10 +155,10 @@ public class MainActivity extends AppCompatActivity {
     {
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        mTabBtnSatellite = (LinearLayout) findViewById(R.id.tab_satellite);
-        mTabBtnMap = (LinearLayout) findViewById(R.id.tab_map);
-        mTabBtnCommunication = (LinearLayout) findViewById(R.id.tab_communication);
-        mTabBtnCantacts = (LinearLayout) findViewById(R.id.tab_cantacts);
+        mTabBtnSatellite = (LinearLayout) findViewById(R.id.id_tab_bottom_satellite);
+        mTabBtnMap = (LinearLayout) findViewById(R.id.id_tab_bottom_map);
+        mTabBtnCommunication = (LinearLayout) findViewById(R.id.id_tab_bottom_communication);
+        mTabBtnCantacts = (LinearLayout) findViewById(R.id.id_tab_bottom_cantacts);
 
         SatelliteFragment tabSatellite = new SatelliteFragment();
         MapFragment tabMap = new MapFragment();
